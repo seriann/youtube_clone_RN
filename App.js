@@ -1,21 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
+//import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Provider as PaperProvider } from 'react-native-paper';
+import DrawerContent from './navigations/drawer'
+import Login from './screens/Login'
+import Register from './screens/Register'
+import FeedStack from './navigations/feedStack'
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider> 
+     <NavigationContainer>
+        <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
+           <Drawer.Screen name='Home' component={FeedStack}/>
+           <Drawer.Screen name='Login' component={Login}/>
+           <Drawer.Screen name='Register' component={Register}/>
+           
+        </Drawer.Navigator>
+     </NavigationContainer>
+    </PaperProvider> 
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
