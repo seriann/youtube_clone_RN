@@ -15,9 +15,9 @@ export default function App() {
     <PaperProvider> 
      <NavigationContainer>
         <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
-           <Drawer.Screen name='Home' component={FeedStack}/>
+        <Drawer.Screen name='Register' component={Register}/>
            <Drawer.Screen name='Login' component={Login}/>
-           <Drawer.Screen name='Register' component={Register}/>
+           <Drawer.Screen name='Home' component={FeedStack}/>
            
         </Drawer.Navigator>
      </NavigationContainer>
