@@ -3,21 +3,33 @@ import { StyleSheet ,View } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
 import {useTheme,Avatar,Title,Caption,Paragraph,Drawer,Text,TouchableRipple,Switch} from 'react-native-paper';
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigation } from '@react-navigation/native';
+import setUser from '../redux/action-creators/user'
 
 const DrawerContent = (props) => {
+  const dispatch = useDispatch()
+
+  const user = useSelector((state)=> state.userReducer.user.user)
+
+  const handleLogout = () => {
+    dispatch(setUser({}))
+    props.navigation.navigate("Login")
+  }
+
     return(
            <DrawerContentScrollView {...props}>
               <View style={styles.drawerContent}>
                 <View style={styles.userInfoSection}>
                 <Avatar.Image
                  source={{
-                   uri:'https://www.google.com/search?q=akita+inu+meme+gordo&sxsrf=ALeKk01UKO0c-uag8FCd7bXAkfhet-2LJg:1613511854798&tbm=isch&source=iu&ictx=1&fir=dnAQ_HA4wzHUhM%252CDwGU3jHTHGW3aM%252C_&vet=1&usg=AI4_-kQ2Z-hlAVN6RYmZbZAMw3auErQTXQ&sa=X&ved=2ahUKEwjzosiHsO_uAhXfH7kGHVyBAygQ9QF6BAgOEAE#imgrc=dnAQ_HA4wzHUhM',
+                   uri:'https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg',
                  }}
                  size={50}
                 />
-                <Title style={styles.title}>Ian</Title>
-                <Caption style={styles.caption}>@Ian</Caption>
-                <View style={styles.row}>             
+                <Title style={styles.title}>{user.name}</Title>
+                <Caption style={styles.caption}>@{user.user}</Caption>
+                <View style={styles.row}>
                    </View>
                  </View>
               </View>
@@ -44,7 +56,7 @@ const DrawerContent = (props) => {
                         </View>
                       </TouchableRipple>
                     </Drawer.Section>
-                
+
                     <View>
           <Drawer.Section style={styles.bottomDrawerSection}>
             <DrawerItem
@@ -56,7 +68,7 @@ const DrawerContent = (props) => {
                 />
               )}
               label="Log Out"
-              onPress={()=>console.log("deslogueo")}
+              onPress={handleLogout}
             />
           </Drawer.Section>
         </View>

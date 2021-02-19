@@ -2,10 +2,10 @@ import React from 'react'
 import styles from '../styles/index'
 import { View,Text } from 'react-native'
 
-const Main = () => {
+const Main = ({user}) => {
   return (
     <View>
-      <Text>Main</Text>
+      <Text>{user.user}</Text>
     </View>
   )
 }

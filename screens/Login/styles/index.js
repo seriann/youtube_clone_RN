@@ -46,5 +46,9 @@ export default StyleSheet.create({
    error:{
      fontSize:22,
      color:'red',
-   }
+   },
+   loader:{
+     color:"#bf3636",
+     marginTop:"5%"
+   },
 })
