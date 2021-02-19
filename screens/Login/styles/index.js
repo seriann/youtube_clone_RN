@@ -1,0 +1,50 @@
+import { StyleSheet } from 'react-native'
+
+export default StyleSheet.create({
+  container:{
+      flex:1,
+      flexDirection:'column',
+     borderColor:"black",
+     justifyContent:'center',
+     alignItems:'center',
+     backgroundColor:"white",
+
+  },
+  input:{
+      alignSelf:'center',
+      marginTop:"2%",
+      fontSize:20,
+      width:"100%",
+   },
+   inputsContainer:{
+     width:"85%",
+     justifyContent:'center',
+     alignItems:'center',
+   },
+   button:{
+     backgroundColor:'#bf3636',
+     width:"100%",
+     marginTop:"5%",
+   },
+   text:{
+     color:'black'
+   },
+   text2:{
+     fontWeight:'bold',
+     fontSize:20
+   },
+   img:{
+     height:"20%",
+     width:"70%"
+   },
+   redirect:{
+     fontWeight:'bold',
+     fontSize:20,
+     color:"#e30e83",
+     alignSelf:'flex-end'
+   },
+   error:{
+     fontSize:22,
+     color:'red',
+   }
+})
