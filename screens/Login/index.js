@@ -3,7 +3,7 @@ import useInputs from '../../hooks/useInputs'
 import Login from './partials/LoginComponent'
 import API from '../../api/usersApi.js'
 import { useDispatch } from "react-redux";
-import setUser from '../../redux/action-creators/user'
+import { setUser } from '../../redux/action-creators/user'
 
 const LoginScreen = ({navigation}) => {
 const [{username,password},handleChange] = useInputs()
@@ -17,10 +17,10 @@ const handleSubmit = async () => {
   try{
 if(!username.length || !password.length ) throw new SyntaxError("please, fill out all inputs")
 
-  const response = await API.post("/auth",{user:username,password}).then(res=> res.data)
+  const response = await API.post("/auth",{user:username,password}).then(res=> res.data.data.user)
 
   setIsLoading(false)
-  dispatch(setUser(response.data))
+  dispatch(setUser(response))
   navigation.navigate("Home")
   }catch(e){
     console.log("ex",e.message)

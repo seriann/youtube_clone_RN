@@ -6,4 +6,6 @@ const setUser = (data) => ({
    payload: data
  })
 
- export default setUser
+ const logoutUser = () => (dispatch) => dispatch(setUser({}));
+
+ export {setUser, logoutUser}

@@ -2,12 +2,12 @@ import React from 'react'
 import styles from '../styles/index'
 import { View,Text } from 'react-native'
 
-const Main = () => {
+const Favourites = () => {
   return (
     <View>
-      <Text>Main</Text>
+      <Text>favoritos</Text>
     </View>
   )
 }
 
-export default Main
+export default Favourites

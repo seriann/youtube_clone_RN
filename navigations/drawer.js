@@ -5,20 +5,24 @@ import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
 import {useTheme,Avatar,Title,Caption,Paragraph,Drawer,Text,TouchableRipple,Switch} from 'react-native-paper';
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigation } from '@react-navigation/native';
-import setUser from '../redux/action-creators/user'
+import {logoutUser} from '../redux/action-creators/user'
 
 const DrawerContent = (props) => {
   const dispatch = useDispatch()
 
-  const user = useSelector((state)=> state.userReducer.user.user)
+  const user = useSelector((state)=> state.userReducer.user)
 
   const handleLogout = () => {
-    dispatch(setUser({}))
+    dispatch(logoutUser())
     props.navigation.navigate("Login")
   }
 
     return(
-           <DrawerContentScrollView {...props}>
+      <DrawerContentScrollView {...props}>
+           {JSON.stringify(user) == "{}"?
+           <Text style={{alignSelf:'center',color:'red'}}>please login first </Text>
+           :
+             <View>
               <View style={styles.drawerContent}>
                 <View style={styles.userInfoSection}>
                 <Avatar.Image
@@ -72,9 +76,11 @@ const DrawerContent = (props) => {
             />
           </Drawer.Section>
         </View>
-
-           </DrawerContentScrollView>
+        </View>
+           }
+    </DrawerContentScrollView>
     )
+
 }
 
 const styles = StyleSheet.create({
