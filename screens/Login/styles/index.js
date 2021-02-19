@@ -27,7 +27,8 @@ export default StyleSheet.create({
      marginTop:"5%",
    },
    text:{
-     color:'black'
+     color:'black',
+     fontSize:20
    },
    text2:{
      fontWeight:'bold',
