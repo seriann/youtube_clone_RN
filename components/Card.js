@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, Image, View } from 'react-native'
+import { StyleSheet, Text, Image, View, Dimensions } from 'react-native'
 import { Avatar } from 'react-native-paper';
 import normalize from 'react-native-normalize';
 
@@ -15,7 +15,10 @@ const Card = ({img, channel, imgChannel, title}) => {
        <View style={styles.infContainer}>
           <Avatar.Image style={{marginHorizontal:"2%"}} size={50} source={{uri:imgChannel}}/>
            <View style={styles.channelInfContainer}>
-             <Text style={styles.title}>{title}</Text>
+             <Text
+              numberOfLines={2}
+              ellipsizeMode='tail'
+              style={styles.title}>{title}</Text>
              <Text style={styles.channel}>{channel}</Text>
            </View>
        </View>
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
   },
   img:{
     width:"100%",
-    height:normalize(130),
+    height:normalize(180),
   },
   infContainer:{
     flexDirection:'row',
@@ -42,7 +45,8 @@ const styles = StyleSheet.create({
   },
   title:{
     fontWeight:'bold',
-    fontSize:normalize(18)
+    fontSize:normalize(18),
+    width:Dimensions.get('screen').width - normalize(100)
   },
   channel:{
     fontSize:normalize(17),

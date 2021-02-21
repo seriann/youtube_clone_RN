@@ -13,7 +13,6 @@ const BottomNav = ({navigation}) => {
   const [bool, setBool] = useState(true)
   const currentRoute = routes[index].state ? routes[index].state.index : 0
 
-
   return (
     <Tab.Navigator
       initialRouteName="Feed"
