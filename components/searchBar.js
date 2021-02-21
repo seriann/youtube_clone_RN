@@ -3,16 +3,26 @@ import { View, TextInput, StyleSheet} from 'react-native'
 import { useSelector, useDispatch } from 'react-redux'
 import { Ionicons } from '@expo/vector-icons'
 import normalize from 'react-native-normalize';
-import { setSearchTerm } from '../redux/action-creators/search'
-
+import { setData, setLoading } from '../redux/action-creators/search'
+import { Youtube } from '../api/youtubeApi'
 
 const SearchBar = ({search, setSearch}) => {
 const dispatch = useDispatch()
-const searchTerm = useSelector((state)=> state.searchReducer.search)
+const searchData = useSelector((state)=> state.searchReducer.search)
 
-  useEffect(()=>{
-    dispatch(setSearchTerm(search))
-  },[search])
+const handleSubmit = async() => {
+  dispatch(setLoading(true))
+  const y = new Youtube(search)
+  try{
+    const res = await y.getVideos()
+    dispatch(setData(res.items))
+    dispatch(setLoading(false))
+  }catch(e){
+    dispatch(setLoading(false))
+    console.log(e)
+  }
+}
+
 
   return(
     <View style={styles.container}>
@@ -23,7 +33,7 @@ const searchTerm = useSelector((state)=> state.searchReducer.search)
        autoCorrect={false}
        value={search}
        onChangeText={setSearch}
-       onSubmitEditing={()=>console.log(search)}
+       onSubmitEditing={handleSubmit}
        placeholder='Search'
       />
       <Ionicons

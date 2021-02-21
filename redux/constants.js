@@ -1,3 +1,5 @@
 export const SET_USER = "SET_USER"
 export const PRESSED = "PRESSED"
 export const SEARCH = "SEARCH"
+export const SET_MAIN_CONTENT = "SET_MAIN_CONTENT"
+export const IS_LOADING = "IS_LOADING"

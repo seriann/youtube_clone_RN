@@ -1,5 +1,5 @@
 //import 'react-native-gesture-handler';
-import React from 'react';
+import React,{ useEffect } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Provider as PaperProvider } from 'react-native-paper';
@@ -10,11 +10,11 @@ import FeedStack from './navigations/feedStack'
 import { Provider } from "react-redux";
 import store from './redux/index'
 
-//const API_KEY= "AIzaSyDcC_2lHAxWdJ6LLjO_fKvHAi1nopVhsgI"
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+  
   return (
     <PaperProvider>
      <Provider store={store}>

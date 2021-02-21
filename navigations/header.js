@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, Image, View, StyleSheet } from 'react-native'
+import { TouchableOpacity, Image, View, StyleSheet, Text } from 'react-native'
 import { Appbar, Avatar } from "react-native-paper";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
@@ -36,8 +36,8 @@ const Header = ({ scene, previous, navigation }) => {
             <Appbar.Content
              title={<MaterialCommunityIcons color="red" name="youtube" size={40} />}
             />
-
         )}
+
 
         {isInSearchScreen?
          <SearchBar search={search} setSearch={setSearch}/>
