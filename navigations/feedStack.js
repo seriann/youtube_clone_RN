@@ -4,6 +4,7 @@ import Main from '../screens/Main/index'
 import Player from '../screens/player/index'
 import Header from './header'
 import BottomNavigator from './bottomNavigator'
+import Search from '../screens/Search/index'
 
 const Stack = createStackNavigator()
 
@@ -20,6 +21,7 @@ const FeedStack = () => {
         >
             <Stack.Screen name="Bottom" component={BottomNavigator}/>
             <Stack.Screen name="player" component={Player}/>
+            <Stack.Screen name="Search" component={Search}/>
         </Stack.Navigator>
     )
 }
