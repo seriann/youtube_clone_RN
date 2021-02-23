@@ -1,20 +1,29 @@
 import React from 'react'
 import styles from '../styles/index'
 import { View, Text,FlatList, TouchableOpacity } from 'react-native'
+import { ActivityIndicator } from 'react-native-paper';
 import Card from './searchCard'
 
-const Search = ({dummyData}) => {
+const Search = ({data, isLoading, navigation, changeHeader}) => {
   return (
-    <View>
+    <View style={styles.container}>
+    {isLoading && <ActivityIndicator style={styles.activityIndicator} color={"#bf3636"}/>}
       <FlatList
-       data={dummyData}
-       keyExtractor={item => item.id}
+       data={data}
+       keyExtractor={item => item.id.videoId}
        renderItem={({item}) =>{
-        return <TouchableOpacity>
+        return <TouchableOpacity onPress={()=>{
+          navigation.navigate('player',{
+                                        videoId:item.id.videoId,
+                                        title:item.snippet.title,
+                                        channel:item.snippet.channelTitle
+                                      })
+          changeHeader()
+        }}>
            <Card
-           img={item.img}
-           channel={item.channel}
-           title={item.title}
+           img={item.snippet.thumbnails.medium.url}
+           channel={item.snippet.channelTitle}
+           title={item.snippet.title}
            />
          </TouchableOpacity>
        }}

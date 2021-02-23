@@ -1,14 +1,24 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import Main from '../screens/Main/index'
 import Player from '../screens/player/index'
 import Header from './header'
 import BottomNavigator from './bottomNavigator'
 import Search from '../screens/Search/index'
+import { setPressed } from '../redux/action-creators/search'
+import { fetchMainVideos } from '../redux/action-creators/main'
+import { useDispatch } from 'react-redux'
 
 const Stack = createStackNavigator()
 
 const FeedStack = () => {
+
+  const dispatch = useDispatch()
+    useEffect(()=>{
+      dispatch(setPressed(false))
+      dispatch(fetchMainVideos())
+    },[])
+
     return(
         <Stack.Navigator
          initialRouteName="FeedList"
