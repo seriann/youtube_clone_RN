@@ -10,11 +10,12 @@ import FeedStack from './navigations/feedStack'
 import { Provider } from "react-redux";
 import store from './redux/index'
 
+//console.disableYellowBox = true;
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
-  
+
   return (
     <PaperProvider>
      <Provider store={store}>

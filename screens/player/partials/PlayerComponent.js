@@ -25,12 +25,15 @@ const Player = ({title,channel,videoUrl,relatedVideos,handleNavigate}) => {
          style={styles.title}
          >{title}</Text>
            <View style={styles.favContainer}>
-              <TouchableOpacity>
-                <AntDesign name="like1" color={"grey"} size={30} />
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <AntDesign name="dislike1" color={"grey"} size={30} />
-              </TouchableOpacity>
+           <Text style={styles.favTxt}>add to favourites?</Text>
+             <View style={styles.likeContainer}>
+                <TouchableOpacity>
+               <AntDesign name="like1" color={"grey"} size={30} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+               <AntDesign name="dislike1" color={"grey"} size={30} />
+                </TouchableOpacity>
+              </View>
            </View>
           <View style={styles.channel}>
             <Avatar.Image style={{marginHorizontal:"2%"}} size={40} source={{uri:img}}/>

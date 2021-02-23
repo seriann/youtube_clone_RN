@@ -18,22 +18,36 @@ export default StyleSheet.create({
    fontWeight:'bold',
    fontSize:normalize(25),
    width,
-   paddingHorizontal:'3%'
+   paddingHorizontal:'3%',
+   marginBottom:'2%'
  },
  favContainer:{
-   width:'30%',
+   width:'80%',
    flexDirection:'row',
    marginVertical:'3%',
-   justifyContent:'space-around'
+   justifyContent:'space-around',
+   alignItems:'center',
  },
  channel:{
    flexDirection:'row',
    alignItems:'center',
-   borderColor:'#d9d9d9',
+   borderColor:'#c7c7c7',
+   paddingTop:'1%',
+   paddingBottom:'1%',
    borderTopWidth:0.9,
    borderBottomWidth:0.9,
  },
  txt:{
   fontWeight:'bold'
- }
+},
+likeContainer:{
+  flexDirection:'row',
+  justifyContent:'space-between',
+  width:'25%'
+},
+favTxt:{
+  color:'#b51616',
+  fontWeight:'bold',
+  fontSize:normalize(20)
+}
 })
