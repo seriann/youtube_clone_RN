@@ -3,7 +3,7 @@ import styles from '../styles/index'
 import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import Card from '../../../components/Card'
 
-const Main = ({data}) => {
+const Main = ({data, navigation}) => {
 const img = "https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg"
    return (
     <View styles={styles.container}>
@@ -11,7 +11,12 @@ const img = "https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-ico
        data={data}
        keyExtractor={item => item.id.videoId}
        renderItem={({item}) =>{
-        return  <TouchableOpacity>
+        return  <TouchableOpacity onPress={()=>navigation.navigate('player',{
+                                      videoId:item.id.videoId,
+                                      title:item.snippet.title,
+                                      channel:item.snippet.channelTitle
+                                    })
+                }>
            <Card
            img={item.snippet.thumbnails.high.url}
            channel={item.snippet.channelTitle}

@@ -7,6 +7,6 @@ const setContent = (data) => ({
 })
 
 export const fetchMainVideos = () => (dispatch) => {
-  const y = new Youtube("",20)
+  const y = new Youtube("")
   return y.getVideos().then(res=> dispatch(setContent(res.items))).catch(err=>err)
 }

@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import useInputs from '../hooks/useInputs'
 import { useSelector, useDispatch } from 'react-redux'
-import { setPressed } from '../redux/action-creators/search'
+import { setPressed, setInVideo } from '../redux/action-creators/search'
 import SearchBar from '../components/searchBar'
 
 const Header = ({ scene, previous, navigation }) => {
@@ -13,6 +13,7 @@ const Header = ({ scene, previous, navigation }) => {
     const dispatch = useDispatch()
     const isInSearchScreen = useSelector((state)=> state.searchReducer.pressed)
     const setSearch = handleChange('search')
+    const inVideo = useSelector((state)=> state.searchReducer.inVideo)
 
     const { options } = scene.descriptor;
     const title =
@@ -27,7 +28,13 @@ const Header = ({ scene, previous, navigation }) => {
         {previous ? (
           <Appbar.BackAction
             onPress={()=>{
-              dispatch(setPressed(false))
+              if(isInSearchScreen && !inVideo){
+                dispatch(setPressed(false))
+              }
+               else if(inVideo){
+                dispatch(setInVideo(false))
+                dispatch(setPressed(true))
+              }
               navigation.pop()
             }}
           />
@@ -38,6 +45,8 @@ const Header = ({ scene, previous, navigation }) => {
             />
         )}
 
+        <Appbar.Content
+        />
 
         {isInSearchScreen?
          <SearchBar search={search} setSearch={setSearch}/>

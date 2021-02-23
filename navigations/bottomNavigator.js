@@ -27,7 +27,7 @@ const BottomNav = ({navigation}) => {
         options={{
           tabBarLabel: "Home",
           tabBarIcon: () => (
-            <Entypo name="home" style={currentRoute == 0? styles.red: styles.black} size={24} />
+            <Entypo name="home" style={currentRoute == 0? styles.red: styles.grey} size={24} />
           ),
         }}
       />
@@ -38,7 +38,7 @@ const BottomNav = ({navigation}) => {
         options={{
           tabBarLabel: "Favs",
           tabBarIcon: () =>(
-          <Fontisto name="favorite" style={currentRoute == 1? styles.red: styles.black} size={24}  />
+          <Fontisto name="favorite" style={currentRoute == 1? styles.red: styles.grey} size={24}  />
           ),
         }}
       />
@@ -56,8 +56,8 @@ const styles = StyleSheet.create({
   red:{
     color:'red'
   },
-  black:{
-    color:'black'
+  grey:{
+    color:'#bab7b6'
   }
 })
 
