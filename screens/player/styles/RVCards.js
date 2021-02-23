@@ -13,7 +13,7 @@ export default StyleSheet.create({
     padding:'2%'
   },
   img:{
-    width:'30%',
+    width:'35%',
     height:normalize(80),
   },
   title:{

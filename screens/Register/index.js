@@ -12,7 +12,7 @@ const [isLoading, setIsLoading] = useState(false)
 const handleSubmit =async () => {
 setIsLoading(true)
 try{
-if(!email.length || !password.length || !name.length || !username.length) throw new SyntaxError("please, fill out all inputs")
+if(!email.length || !password.length || !name.length || !username.length) throw new SyntaxError("please, fill out all inputs") //me aseguro de que todos los inputs sean llenados
 
   const response = await API.post("/user",{
      user: username,
@@ -20,16 +20,16 @@ if(!email.length || !password.length || !name.length || !username.length) throw 
      name,
      email
    }).then(res=>res.data)
-   if(response.error) throw new Error(JSON.stringify(response))
+   if(response.error) throw new Error(JSON.stringify(response)) // me aseguro de que si hay un error salte a la excepción
    setIsLoading(false)
    navigation.navigate("Login")
 }catch(e){
   setIsLoading(false)
   setErrBool(true)
-  if(e instanceof SyntaxError){
+  if(e instanceof SyntaxError){  //setea el error de los inputs vacios
     setError(e.message)
   }else{
-    setError("ups, something went wrong")
+    setError("ups, something went wrong") //excepción general
   }
   setTimeout(()=>{
     setError("")

@@ -8,7 +8,7 @@ const dispatch = useDispatch()
 const isLoading = useSelector((state)=> state.searchReducer.isLoading)
 const data = useSelector((state)=> state.searchReducer.search)
 
-const changeHeader = () => {
+const changeHeader = () => { //ayuda a ocultar la searchbar cuando entras a un video
   dispatch(setInVideo(true))
   dispatch(setPressed(false))
 }

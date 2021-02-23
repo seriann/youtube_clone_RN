@@ -11,7 +11,6 @@ const DrawerContent = (props) => {
   const dispatch = useDispatch()
 
   const user = useSelector((state)=> state.userReducer.user)
-
   const handleLogout = () => {
     dispatch(logoutUser())
     props.navigation.navigate("Login")

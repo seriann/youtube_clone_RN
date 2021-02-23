@@ -16,7 +16,8 @@ const Search = ({data, isLoading, navigation, changeHeader}) => {
           navigation.navigate('player',{
                                         videoId:item.id.videoId,
                                         title:item.snippet.title,
-                                        channel:item.snippet.channelTitle
+                                        channel:item.snippet.channelTitle,
+                                        image:item.snippet.thumbnails.high.url
                                       })
           changeHeader()
         }}>
