@@ -49,7 +49,7 @@ const handleNavigate = (id,title,channel,image) => {
   navigation.push('player',{videoId:id,title:title,channel:channel,image:image})
 }
 
-//const videoUrl = `https://rest-api-sockets.herokuapp.com/playVideo?=${videoId}`
+
 const videoUrl = `http://www.youtube.com/embed/${videoId}`
 
     return <Player
