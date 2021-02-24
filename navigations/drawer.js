@@ -36,19 +36,7 @@ const DrawerContent = (props) => {
                    </View>
                  </View>
               </View>
-              <Drawer.Section style={styles.drawerSection}>
-                  <DrawerItem
-                    icon={({ color, size }) => (
-                      <MaterialCommunityIcons
-                        name="bookmark-outline"
-                        color={color}
-                        size={size}
-                      />
-                    )}
-                    label="Videos favoritos"
-                    onPress={() => {}}
-                  />
-               </Drawer.Section>
+              
                     <Drawer.Section title="Preferences">
                       <TouchableRipple onPress={() => {}}>
                         <View style={styles.preference}>

@@ -29,7 +29,7 @@ export const addFavourite = (userId,videoId,img,title,channel) => (dispatch) => 
 }
 
 export const removeFavourite = (userId,videoId,img,title,channel) => (dispatch) => {
-  API.delete(`/user/${userId}/rem/favVideos`,{
+  API.put(`/user/${userId}/rem/favVideos`,{
     videoId,
     img,
     title,

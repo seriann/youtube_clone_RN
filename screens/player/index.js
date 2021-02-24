@@ -36,6 +36,7 @@ useEffect(()=>{
 
 const handleFav = (userId, videoId, image, title, channel) => {
   dispatch(addFavourite(userId,videoId,image,title,channel))
+  setIsLiked(true)
 }
 
 const handleDislike = (userId, videoId, image, title, channel) => {
