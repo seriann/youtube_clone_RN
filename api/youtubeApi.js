@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 //las api keys comentadas ya excedieron la cuota semanal (err status 403)
+//si la app devuelve el err status, abria que crear otra api key en google para poder probarla
 //const API_KEY= "AIzaSyDcC_2lHAxWdJ6LLjO_fKvHAi1nopVhsgI"
 //const API_KEY= "AIzaSyA1y3gy9MOO08frDrD6QGxpUVdEXF6O57Y"
 const API_KEY= "AIzaSyCFiUNFgrPc599sffg79wZ6LKSzyJDauok"
