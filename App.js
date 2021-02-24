@@ -1,32 +1,15 @@
-//import 'react-native-gesture-handler';
-import React,{ useEffect } from 'react';
-import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Provider as PaperProvider } from 'react-native-paper';
-import DrawerContent from './navigations/drawer'
-import Login from './screens/Login/index'
-import Register from './screens/Register'
-import FeedStack from './navigations/feedStack'
-import { Provider } from "react-redux";
+import React from 'react'
+import App from './AppWrapper'
+import { Provider, useSelector } from "react-redux";
 import store from './redux/index'
 
-//console.disableYellowBox = true;
-
-const Drawer = createDrawerNavigator();
-
-export default function App() {
-
-  return (
-    <PaperProvider>
-     <Provider store={store}>
-       <NavigationContainer>
-          <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
-             <Drawer.Screen name='Login' component={Login}/>
-             <Drawer.Screen name='Register' component={Register}/>
-             <Drawer.Screen name='Home' component={FeedStack}/>
-          </Drawer.Navigator>
-       </NavigationContainer>
-      </Provider>
-    </PaperProvider>
-  );
+export default function AppWrapper() {
+  return <Provider store={store}>
+    <App/>
+  </Provider>
 }
+
+
+//Este componente seria el verdadero Wrapper
+//haciendo que el Componente App llamado "AppWrapper"
+//pueda tener acceso al store nadamas cargar, y asi poder usar el Dark Mode

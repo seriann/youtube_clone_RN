@@ -16,10 +16,6 @@ export default StyleSheet.create({
     width:'35%',
     height:normalize(80),
   },
-  title:{
-    width: width * .6,
-    fontWeight:'bold'
-  },
   channel:{
     color:'grey'
   }

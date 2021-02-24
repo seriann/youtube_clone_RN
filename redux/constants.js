@@ -14,3 +14,6 @@ export const SET_MAIN_CONTENT = "SET_MAIN_CONTENT"
 export const SET_FAVS = "SET_FAVS"
 export const ADD_FAV = "ADD_FAV"
 export const REMOVE_FAV = "REMOVE_FAV"
+
+//Dark mode
+export const DARK_MODE = "DARK_MODE"

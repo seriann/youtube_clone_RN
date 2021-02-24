@@ -1,12 +1,16 @@
 import React from 'react'
 import styles from '../styles/index'
 import { View, Text,FlatList, TouchableOpacity } from 'react-native'
-import { ActivityIndicator } from 'react-native-paper';
+import { ActivityIndicator, useTheme } from 'react-native-paper';
 import Card from './searchCard'
 
 const Search = ({data, isLoading, navigation, changeHeader}) => {
+  const theme = useTheme()
   return (
-    <View style={styles.container}>
+    <View style={{
+      backgroundColor:theme.colors.background,
+      flex:1
+    }}>
     {isLoading && <ActivityIndicator style={styles.activityIndicator} color={"#bf3636"}/>}
       <FlatList
        data={data}

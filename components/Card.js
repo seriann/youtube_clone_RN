@@ -1,11 +1,17 @@
 import React from 'react'
 import { StyleSheet, Text, Image, View, Dimensions } from 'react-native'
-import { Avatar } from 'react-native-paper';
+import { Avatar, useTheme } from 'react-native-paper';
 import normalize from 'react-native-normalize';
 
 const Card = ({img, channel, imgChannel, title}) => {
+  const theme = useTheme()
   return (
-    <View style={styles.container}>
+    <View style={{
+     flex:1,
+     flexDirection:'column',
+     backgroundColor:theme.colors.background,
+     marginBottom:'2%'
+    }}>
       <View>
          <Image
          style={styles.img}
@@ -18,7 +24,12 @@ const Card = ({img, channel, imgChannel, title}) => {
              <Text
               numberOfLines={2}
               ellipsizeMode='tail'
-              style={styles.title}>{title}</Text>
+              style={{
+                fontWeight:'bold',
+                fontSize:normalize(18),
+                width:Dimensions.get('screen').width - normalize(100),
+                color:theme.colors.text
+              }}>{title}</Text>
              <Text style={styles.channel}>{channel}</Text>
            </View>
        </View>
@@ -26,12 +37,6 @@ const Card = ({img, channel, imgChannel, title}) => {
   )
 }
 const styles = StyleSheet.create({
-  container:{
-   flex:1,
-   flexDirection:'column',
-   backgroundColor:'white',
-   marginBottom:'2%'
-  },
   img:{
     width:"100%",
     height:normalize(180),
@@ -42,11 +47,6 @@ const styles = StyleSheet.create({
   },
   channelInfContainer:{
     flexDirection:'column'
-  },
-  title:{
-    fontWeight:'bold',
-    fontSize:normalize(18),
-    width:Dimensions.get('screen').width - normalize(100)
   },
   channel:{
     fontSize:normalize(17),

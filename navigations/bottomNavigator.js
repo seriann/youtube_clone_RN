@@ -5,10 +5,12 @@ import { Fontisto } from '@expo/vector-icons';
 import Favourites from '../screens/Favourites/index'
 import Main from '../screens/Main/index'
 import {StyleSheet} from 'react-native'
+import {useTheme} from 'react-native-paper'
 
 const Tab = createMaterialBottomTabNavigator();
 
 const BottomNav = ({navigation}) => {
+  const theme = useTheme()
   const { index, routes } = navigation.dangerouslyGetState();
   const [bool, setBool] = useState(true)
   const currentRoute = routes[index].state ? routes[index].state.index : 0
@@ -16,9 +18,13 @@ const BottomNav = ({navigation}) => {
   return (
     <Tab.Navigator
       initialRouteName="Feed"
-      inactiveColor="black"
-      activeColor="red"
-      barStyle={styles.container}
+      inactiveColor={theme.dark?styles.grey.color:'black'}
+      activeColor={theme.dark?styles.inDarkActive.color:'red'}
+      barStyle={{
+        backgroundColor:theme.colors.bottomTabColor,
+        borderTopColor:theme.colors.lineBottomColor,
+        borderTopWidth:0.5
+      }}
       sceneAnimationEnabled={false}
     >
       <Tab.Screen
@@ -27,7 +33,7 @@ const BottomNav = ({navigation}) => {
         options={{
           tabBarLabel: "Home",
           tabBarIcon: () => (
-            <Entypo name="home" style={currentRoute == 0? styles.red: styles.grey} size={24} />
+            <Entypo name="home" style={theme.dark?(currentRoute == 0? styles.inDarkActive: styles.grey):currentRoute == 0? styles.red : styles.grey} size={24} />
           ),
         }}
       />
@@ -38,7 +44,7 @@ const BottomNav = ({navigation}) => {
         options={{
           tabBarLabel: "Favs",
           tabBarIcon: () =>(
-          <Fontisto name="favorite" style={currentRoute == 1? styles.red: styles.grey} size={24}  />
+          <Fontisto name="favorite" style={theme.dark?(currentRoute == 1? styles.inDarkActive: styles.grey):currentRoute == 1? styles.red : styles.grey} size={24}  />
           ),
         }}
       />
@@ -48,17 +54,15 @@ const BottomNav = ({navigation}) => {
 }
 
 const styles = StyleSheet.create({
-  container:{
-    backgroundColor:'white',
-    borderTopColor:"#c4c4c4",
-    borderTopWidth:0.5
-  },
   red:{
     color:'red'
   },
   grey:{
     color:'#bab7b6'
-  }
+  },
+  inDarkActive:{
+    color:'#f7f7f7'
+  },
 })
 
 export default BottomNav

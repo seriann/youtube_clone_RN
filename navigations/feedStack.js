@@ -20,7 +20,7 @@ const FeedStack = () => {
       dispatch(setPressed(false))
       dispatch(fetchMainVideos())
       dispatch(fetchFavourites(userId))
-    },[])
+    },[userId])
 
     return(
         <Stack.Navigator

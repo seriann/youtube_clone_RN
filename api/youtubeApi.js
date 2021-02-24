@@ -1,8 +1,9 @@
 import axios from 'axios'
 
-//2 api keys por si una excede la cuota diaria (err status 403)
+//las api keys comentadas ya excedieron la cuota semanal (err status 403)
 //const API_KEY= "AIzaSyDcC_2lHAxWdJ6LLjO_fKvHAi1nopVhsgI"
-const API_KEY= "AIzaSyA1y3gy9MOO08frDrD6QGxpUVdEXF6O57Y"
+//const API_KEY= "AIzaSyA1y3gy9MOO08frDrD6QGxpUVdEXF6O57Y"
+const API_KEY= "AIzaSyCFiUNFgrPc599sffg79wZ6LKSzyJDauok"
 
 class Youtube {
   constructor(search, videoId, maxNum = 15){

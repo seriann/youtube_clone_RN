@@ -5,11 +5,13 @@ import { DrawerItem, DrawerContentScrollView } from '@react-navigation/drawer';
 import {useTheme,Avatar,Title,Caption,Paragraph,Drawer,Text,TouchableRipple,Switch} from 'react-native-paper';
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigation } from '@react-navigation/native';
-import {logoutUser} from '../redux/action-creators/user'
+import { logoutUser } from '../redux/action-creators/user'
+import { setDark } from '../redux/action-creators/darkMode'
+import { setFavourites } from '../redux/action-creators/favourites'
 
 const DrawerContent = (props) => {
   const dispatch = useDispatch()
-
+  const theme= useTheme()
   const user = useSelector((state)=> state.userReducer.user)
   const handleLogout = () => {
     dispatch(logoutUser())
@@ -36,13 +38,15 @@ const DrawerContent = (props) => {
                    </View>
                  </View>
               </View>
-              
+
                     <Drawer.Section title="Preferences">
-                      <TouchableRipple onPress={() => {}}>
+                      <TouchableRipple onPress={()=> {
+                        dispatch(setDark(!theme.dark))
+                      }}>
                         <View style={styles.preference}>
                           <Text>Dark Theme</Text>
                           <View pointerEvents="none">
-                            <Switch value={false} />
+                            <Switch value={theme.dark} />
                           </View>
                         </View>
                       </TouchableRipple>

@@ -2,12 +2,6 @@ import { StyleSheet, Dimensions } from 'react-native'
 import normalize from 'react-native-normalize';
 
 export default StyleSheet.create({
-  container:{
-    flex:1,
-    flexDirection:'row',
-    padding:"3%",
-    backgroundColor:'white'
-  },
   img:{
     width:"50%",
     height:normalize(100)
