@@ -8,7 +8,10 @@ const RVFlatList = ({data,handleNavigate}) => {
           keyExtractor={item=> item.id.videoId}
           renderItem={({item})=>{
 
-            return <TouchableOpacity onPress={handleNavigate}>
+            return <TouchableOpacity onPress={()=>{
+              if(!item.snippet) return;
+              handleNavigate(item.id.videoId,item.snippet.title,item.snippet.channelTitle,item.snippet.thumbnails.high.url)
+            }}>
                      <RelatedVideosCard
                      img={item.snippet != undefined?item.snippet.thumbnails.high.url: ""}
                      channel={item.snippet != undefined? item.snippet.channelTitle: ""}

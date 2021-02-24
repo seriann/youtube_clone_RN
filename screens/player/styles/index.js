@@ -37,9 +37,6 @@ export default StyleSheet.create({
    borderTopWidth:0.9,
    borderBottomWidth:0.9,
  },
- txt:{
-  fontWeight:'bold'
-},
 likeContainer:{
   flexDirection:'row',
   justifyContent:'space-between',

@@ -2,25 +2,23 @@ import React from 'react'
 import styles from '../styles/index'
 import { View, Text, FlatList, TouchableOpacity } from 'react-native'
 import Card from '../../../components/Card'
+import { userImg } from '../../../constImages/index'
 
-const Main = ({data, navigation}) => {
-const img = "https://png.pngtree.com/png-vector/20191009/ourmid/pngtree-user-icon-png-image_1796659.jpg"
+const Main = ({data, handleNavigate}) => {
+
    return (
     <View styles={styles.container}>
       <FlatList
        data={data}
        keyExtractor={item => item.id.videoId}
        renderItem={({item}) =>{
-        return  <TouchableOpacity onPress={()=>navigation.navigate('player',{
-                                      videoId:item.id.videoId,
-                                      title:item.snippet.title,
-                                      channel:item.snippet.channelTitle
-                                    })
-                }>
+        return  <TouchableOpacity
+                onPress={()=>handleNavigate(item.id.videoId,item.snippet.title,item.snippet.channelTitle,item.snippet.thumbnails.high.url)}
+                >
            <Card
            img={item.snippet.thumbnails.high.url}
            channel={item.snippet.channelTitle}
-           imgChannel={img}
+           imgChannel={userImg}
            title={item.snippet.title}
            />
          </TouchableOpacity>

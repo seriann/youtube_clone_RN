@@ -15,7 +15,7 @@ const dispatch = useDispatch();
 const handleSubmit = async () => {
   setIsLoading(true)
   try{
-if(!username.length || !password.length ) throw new SyntaxError("please, fill out all inputs")
+if(!username.length || !password.length ) throw new SyntaxError("please, fill out all inputs") //me aseguro de que todos los inputs sean llenados
 
   const response = await API.post("/auth",{user:username,password}).then(res=> res.data.data.user)
 
@@ -26,12 +26,15 @@ if(!username.length || !password.length ) throw new SyntaxError("please, fill ou
     console.log("ex",e.message)
     setIsLoading(false)
     setErrBool(true)
-    if(e instanceof SyntaxError){
+    if(e instanceof SyntaxError){ //setea el error de los inputs vacios
       setError(e.message)
-   }else if(e.message.indexOf("404") != -1) {
-     setError("username not found")
-   }else if(e.message.indexOf("401") != -1){
-     setError("invalid password")
+   }else if(e.message.indexOf("404") != -1) { //busco si en el mensaje de error esta el err status 404(not found)
+     setError("username not found")           //que indica que no se encontro un usuario con ese nombre
+   }else if(e.message.indexOf("401") != -1){ //busco si en el mensaje de error esta el err status 401(unauthorized)
+     setError("invalid password")            //que indica que la contraseña es incorrecta
+   }
+   else{
+     setError("ups, something went wrong") //excepción general
    }
    setTimeout(()=>{
      setError("")

@@ -1,14 +1,16 @@
 import React from 'react'
 import { TouchableOpacity, Image, View, StyleSheet, Text } from 'react-native'
-import { Appbar, Avatar } from "react-native-paper";
+import { Appbar, Avatar, useTheme } from "react-native-paper";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import useInputs from '../hooks/useInputs'
 import { useSelector, useDispatch } from 'react-redux'
 import { setPressed, setInVideo } from '../redux/action-creators/search'
 import SearchBar from '../components/searchBar'
+import normalize from 'react-native-normalize';
 
 const Header = ({ scene, previous, navigation }) => {
+    const theme = useTheme()
     const [{search}, handleChange] = useInputs()
     const dispatch = useDispatch()
     const isInSearchScreen = useSelector((state)=> state.searchReducer.pressed)
@@ -24,7 +26,7 @@ const Header = ({ scene, previous, navigation }) => {
         : scene.route.name;
 
     return(
-        <Appbar.Header style={{backgroundColor: 'white'}}>
+        <Appbar.Header style={{backgroundColor:theme.colors.headerColor}}>
         {previous ? (
           <Appbar.BackAction
             onPress={()=>{
@@ -41,22 +43,21 @@ const Header = ({ scene, previous, navigation }) => {
         ) :
         (
             <Appbar.Content
-             title={<MaterialCommunityIcons color="red" name="youtube" size={40} />}
+             title={<MaterialCommunityIcons color="red" name="youtube" size={normalize(39)} />}
             />
         )}
 
-        <Appbar.Content
-        />
+        <Appbar.Content/>
 
         {isInSearchScreen?
          <SearchBar search={search} setSearch={setSearch}/>
         :
-        <View style={{justifyContent:'space-around',flexDirection:'row',alignSelf:'center',width:'25%'}}>
+        <View style={styles.iconContainer}>
          <TouchableOpacity onPress={()=>{
            navigation.push("Search")
            dispatch(setPressed(true))
          }}>
-           <Ionicons name="ios-search" size={30} color="black" />
+           <Ionicons name="ios-search" size={normalize(30)} color={theme.colors.iconColor} />
          </TouchableOpacity>
          <TouchableOpacity
            onPress={() => {
@@ -79,7 +80,9 @@ const Header = ({ scene, previous, navigation }) => {
 }
 
 const styles = StyleSheet.create({
-
+iconContainer:{
+  justifyContent:'space-around',flexDirection:'row',alignSelf:'center',width:'25%'
+}
 })
 
 export default Header

@@ -7,17 +7,20 @@ import BottomNavigator from './bottomNavigator'
 import Search from '../screens/Search/index'
 import { setPressed } from '../redux/action-creators/search'
 import { fetchMainVideos } from '../redux/action-creators/main'
-import { useDispatch } from 'react-redux'
+import { fetchFavourites } from '../redux/action-creators/favourites'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Stack = createStackNavigator()
 
 const FeedStack = () => {
 
+  const userId = useSelector((state)=> state.userReducer.user._id)
   const dispatch = useDispatch()
     useEffect(()=>{
       dispatch(setPressed(false))
       dispatch(fetchMainVideos())
-    },[])
+      dispatch(fetchFavourites(userId))
+    },[userId])
 
     return(
         <Stack.Navigator
