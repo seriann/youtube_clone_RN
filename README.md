@@ -9,6 +9,6 @@ Para correr localmente el proyecto hacer lo siguiente:
 2) Clonar repositorio *"git clone https://github.com/seriann/challenge_RN.git"*
 3) Instalar las dependencias *"npm i"*
 4) Correr el proyecto con *"npm start"* || *"expo start"*
-5) Abrir la aplicacion en *emulador || app de expo || navegador*
+5) Abrir la aplicacion en *"emulador" || "app de expo" || "navegador"*
 
 
