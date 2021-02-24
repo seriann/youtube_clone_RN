@@ -37,26 +37,7 @@ if(!email.length || !password.length || !name.length || !username.length) throw 
   },4000)
 
 }
- /*API.post("/user",{
-    user: username,
-    password,
-    name,
-    email
-  }).then(({data})=> {
-    console.log(data)
-    setIsLoading(false)
-    navigation.navigate("Login")
-  })
-    .catch(err=> {
-      setIsLoading(false)
-      setErrBool(true)
-      console.log(err)
-      setError("ups, something went wrong")
-      setTimeout(()=>{
-        setError("")
-        setErrBool(false)
-      },4000)
-    })*/
+
 
 }
     return <Register error={error} navigation={navigation} errBool={errBool} isLoading={isLoading} username={username} email={email} password={password} handleChange={handleChange} handleSubmit={handleSubmit} />
