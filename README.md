@@ -8,7 +8,7 @@ Para descargar la APK para android: https://expo.io/artifacts/151e2fe3-e18b-4703
 
 O para correr localmente el proyecto hacer lo siguiente:
 
-1) Instalar expo con *"npm install --global expo-cli"*
+1) Instalar expo con *"npm install --global expo-cli"*, si llegaran a existir problemas de incompatibilidad con algun paquete, usar *"expo update 37.0.0"*(version en que la desarrolle)
 2) Clonar repositorio *"git clone https://github.com/seriann/challenge_RN.git"*
 3) Instalar las dependencias *"npm i"*
 4) Correr el proyecto con *"npm start"* || *"expo start"*
