@@ -19,19 +19,13 @@ class Youtube {
   getVideos () {
     return this.MAIN_VIDEOS.get()
                    .then(res => res.data)
-                   .catch(err => {
-                     console.log(err);
-                     return err
-                   })
+                   .catch(err => err)
   }
 
   getRelatedVideos(){
     return this.REALTED_VIDEOS.get()
                               .then(res=> res.data)
-                              .catch(err=> {
-                                console.log(err)
-                                return err
-                              })
+                              .catch(err=> err)
   }
 
 }
